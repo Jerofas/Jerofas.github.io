@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jerofas | Websites & AI Chatbots in Kampala</title>
+<meta name="description" content="Jerofas by Syconarf Motion Pictures builds fast, mobile-first websites and AI receptionist chatbots for businesses in Kampala. Chat on WhatsApp.">
+<style>
+:root{--bg:#ffffff;--soft:#f3f6fa;--card:#ffffff;--ink:#16213e;--mut:#5b6678;--brand:#0f3460;--accent:#1fa855;--line:#dde4ee;--hero:#0f3460;--herotx:#ffffff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1322;--soft:#121a2e;--card:#17203a;--ink:#eef2f9;--mut:#a4b0c5;--brand:#7aa2f7;--line:#273252;--hero:#14224a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1322;--soft:#121a2e;--card:#17203a;--ink:#eef2f9;--mut:#a4b0c5;--brand:#7aa2f7;--line:#273252;--hero:#14224a;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(60px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+section{padding:42px 0}
+section.alt{background:var(--soft)}
+h1,h2,h3{line-height:1.2;margin:0 0 10px}
+h2{font-size:1.55rem;color:var(--brand)}
+.sub{color:var(--mut);margin:0 0 22px}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);border-bottom:1px solid var(--line);z-index:9}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:11px;padding-bottom:11px}
+.logo{font-weight:800;color:var(--brand);text-decoration:none;font-size:1.1rem}
+.logo small{display:block;font-weight:500;font-size:.68rem;color:var(--mut);letter-spacing:.04em}
+.navlinks a{color:var(--ink);text-decoration:none;font-size:.9rem;margin-left:14px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:13px 22px;border-radius:12px;font-weight:700;margin:6px 8px 6px 0}
+.btn.ghost{background:transparent;color:inherit;border:2px solid currentColor}
+.hero{background:var(--hero);color:var(--herotx);padding:60px 0 54px}
+.hero h1{font-size:2.05rem;max-width:640px}
+.hero p{max-width:560px;opacity:.93;margin:0 0 22px}
+.tag{display:inline-block;font-size:.78rem;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.stats{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;font-size:.9rem}
+.stats b{display:block;font-size:1.25rem}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h3{font-size:1.1rem}
+.card p{margin:0;color:var(--mut)}
+.num{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--bg);align-items:center;justify-content:center;font-weight:700;margin-bottom:8px}
+.mock{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.mock .top{padding:22px 16px;color:#fff;font-weight:700}
+.mock .body{padding:14px 16px;font-size:.92rem;color:var(--mut)}
+.mock .body span{display:block;border-bottom:1px solid var(--line);padding:5px 0;color:var(--ink)}
+.mock .body em{float:right;font-style:normal;color:var(--brand);font-weight:700}
+.badge{display:inline-block;margin:12px 16px 16px;font-size:.75rem;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.price{font-size:1.5rem;font-weight:800;color:var(--brand);margin:4px 0 8px}
+.price small{font-size:.85rem;font-weight:500;color:var(--mut)}
+.card ul{margin:0;padding-left:18px;color:var(--mut)}
+.card.hl{border:2px solid var(--accent)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:9px}
+summary{font-weight:600;cursor:pointer}
+details p{margin:8px 0 0;color:var(--mut)}
+.cta{background:var(--hero);color:var(--herotx);text-align:center}
+.cta h2{color:var(--herotx)}
+footer{padding:26px 18px;text-align:center;color:var(--mut);font-size:.88rem}
+.float{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));background:var(--accent);color:#fff;text-decoration:none;padding:13px 18px;border-radius:999px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.28);z-index:11}
+@media(min-width:720px){.grid.c2{grid-template-columns:repeat(2,1fr)}.grid.c3{grid-template-columns:repeat(3,1fr)}.hero h1{font-size:2.8rem}}
+
+/* ===== ASK JEROFAS CHATBOT ===== */
+#jc-btn{position:fixed;right:14px;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:12;background:var(--brand);color:var(--bg);border:0;border-radius:999px;padding:12px 16px;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.28);cursor:pointer}
+#jc-panel{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:min(380px,calc(100vw - 20px));height:min(74vh,540px);background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 34px rgba(0,0,0,.35);z-index:13;display:none;flex-direction:column;overflow:hidden}
+#jc-panel.open{display:flex}
+#jc-head{display:flex;align-items:center;justify-content:space-between;background:var(--hero);color:var(--herotx);padding:12px 14px}
+#jc-head b{display:block;font-size:1rem}
+#jc-head small{opacity:.85;font-size:.72rem}
+#jc-x{background:transparent;border:0;color:inherit;font-size:22px;line-height:1;cursor:pointer;padding:4px 8px}
+#jc-log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.jc-m{max-width:86%;padding:9px 12px;border-radius:14px;font-size:.95rem;line-height:1.4;white-space:pre-wrap;word-wrap:break-word}
+.jc-b{background:var(--soft);color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.jc-u{background:var(--brand);color:var(--bg);align-self:flex-end;border-bottom-right-radius:4px}
+.jc-wa{align-self:flex-start;background:var(--accent);color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px;font-weight:700;font-size:.9rem}
+#jc-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px}
+#jc-chips button{border:1px solid var(--brand);color:var(--brand);background:transparent;border-radius:999px;padding:6px 12px;font-size:.82rem;cursor:pointer}
+#jc-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+#jc-in{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-size:16px;background:var(--bg);color:var(--ink)}
+#jc-send{border:0;background:var(--brand);color:var(--bg);border-radius:999px;padding:0 16px;font-weight:700;cursor:pointer}
+#jc-note{font-size:.68rem;color:var(--mut);text-align:center;padding:0 10px 8px}
+
+a.badge{text-decoration:none;color:var(--brand);border-color:var(--brand);font-weight:600;font-size:.82rem}
+.vid{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center}
+.vid video{width:100%;border-radius:12px;background:#000}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">Jerofas<small>SYCONARF MOTION PICTURES</small></a>
+  <nav class="navlinks"><a href="#services">Services</a><a href="#packages">Prices</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <span class="tag">Kampala, Uganda</span>
+  <h1>Websites that bring customers straight to your WhatsApp.</h1>
+  <p>I build fast, mobile-first websites and AI receptionist chatbots for local businesses, so customers can find you on Google, see your prices, and message you in one tap.</p>
+  <a class="btn" href="https://wa.me/256750321506?text=Hello%20Jero%2C%20I%20would%20like%20a%20website%20for%20my%20business.">Chat on WhatsApp</a>
+  <a class="btn ghost" href="#packages">See prices</a>
+  <div class="stats"><div><b>5 days</b>typical delivery</div><div><b>50%</b>deposit, balance after approval</div><div><b>Free</b>sample homepage</div></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <h2>What I do</h2><p class="sub">Everything your business needs to be found and contacted online.</p>
+  <div class="grid c3">
+    <div class="card"><h3>Business websites</h3><p>Clean, fast sites with your services, prices, photos, opening hours, Google Maps and a WhatsApp button that works on every phone.</p></div>
+    <div class="card"><h3>AI receptionist chatbot</h3><p>A chat assistant on your website that answers customer questions day and night, collects names and phone numbers, and sends leads to your WhatsApp.</p></div>
+    <div class="card"><h3>Property walkthrough videos</h3><p>Professional walkthrough videos for Airbnb hosts and property owners, so guests can see the space before they book.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>How it works</h2><p class="sub">Simple, clear and no surprises.</p>
+  <div class="grid c3">
+    <div class="card"><span class="num">1</span><h3>Tell me about your business</h3><p>Send your logo, photos, services, prices and hours on WhatsApp.</p></div>
+    <div class="card"><span class="num">2</span><h3>See a free sample</h3><p>I make a sample homepage so you can see it before you decide.</p></div>
+    <div class="card"><span class="num">3</span><h3>Approve and start</h3><p>You pay a 50% deposit and I build your full website.</p></div>
+    <div class="card"><span class="num">4</span><h3>Review and launch</h3><p>You check the draft, ask for changes, then pay the balance and go live.</p></div>
+    <div class="card"><span class="num">5</span><h3>Support</h3><p>Fixes for 14 days, then an optional monthly Care Plan for updates.</p></div>
+    <div class="card"><span class="num">&#10003;</span><h3>Your site, your name</h3><p>Ownership of the final website passes to you after full payment.</p></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <h2>Sample designs</h2><p class="sub">Sample websites I designed to show the style your site could have. Tap one to open it.</p>
+  <div class="grid c2">
+    <div class="mock"><div class="top" style="background:#8e3b6b">Glow Salon</div><div class="body"><span>Haircut <em>15,000</em></span><span>Braids <em>from 40,000</em></span><span>Manicure <em>20,000</em></span></div><a class="badge" href="sample-salon.html">View sample site &rarr;</a></div>
+    <div class="mock"><div class="top" style="background:#b4531a">Mama’s Kitchen</div><div class="body"><span>Chicken and rice <em>18,000</em></span><span>Luwombo <em>25,000</em></span><span>Fresh juice <em>5,000</em></span></div><a class="badge" href="sample-restaurant.html">View sample site &rarr;</a></div>
+    <div class="mock"><div class="top" style="background:#1f6f5c">Kampala Hardware</div><div class="body"><span>Cement <em>quoted</em></span><span>Paint <em>quoted</em></span><span>Tools <em>quoted</em></span></div><a class="badge" href="sample-hardware.html">View sample site &rarr;</a></div>
+    <div class="mock"><div class="top" style="background:#0e7c66">Wellspring Pharmacy</div><div class="body"><span>Prescriptions <em>on WhatsApp</em></span><span>Health products <em>in stock</em></span><span>Home delivery <em>on request</em></span></div><a class="badge" href="sample-pharmacy.html">View sample site &rarr;</a></div>
+  </div>
+</div></section>
+
+<section id="videos"><div class="wrap">
+  <h2>Property walkthrough videos</h2><p class="sub">Show guests your space before they book. Walkthrough videos from 100,000 UGX.</p>
+  <div class="grid c2">
+    <div class="card vid" data-src="sample-video-1.mp4"><p>Sample walkthrough video available on WhatsApp.</p></div>
+    <div class="card vid" data-src="sample-video-2.mp4"><p>Sample walkthrough video available on WhatsApp.</p></div>
+  </div>
+  <p style="margin-top:16px"><a class="btn" href="https://wa.me/256750321506?text=Hello%20Jero%2C%20I%20would%20like%20to%20see%20a%20sample%20walkthrough%20video.">Ask for a sample video</a></p>
+</div></section>
+
+<section id="packages" class="alt"><div class="wrap">
+  <h2>Prices</h2><p class="sub">All prices in Uganda Shillings. 50% deposit to start, balance after you approve.</p>
+  <div class="grid c3">
+    <div class="card"><h3>Starter</h3><div class="price">150,000 <small>UGX</small></div><ul><li>1-page website</li><li>WhatsApp and call buttons</li><li>Google Maps and photo gallery</li><li>FAQ chat buttons</li></ul></div>
+    <div class="card hl"><h3>Standard</h3><div class="price">250,000 <small>UGX</small></div><ul><li>4 pages</li><li>Contact form and social links</li><li>Everything in Starter</li><li>Best for most businesses</li></ul></div>
+    <div class="card"><h3>Premium</h3><div class="price">400,000+ <small>UGX</small></div><ul><li>Full custom website</li><li>AI receptionist chatbot</li><li>Priority support</li></ul></div>
+  </div>
+  <div class="grid c3" style="margin-top:14px">
+    <div class="card"><h3>Lite Receptionist</h3><div class="price">+50,000 <small>UGX</small></div><p>WhatsApp Business setup and a booking widget on your site.</p></div>
+    <div class="card"><h3>AI Receptionist</h3><div class="price">+150,000 <small>UGX + 30,000/month</small></div><p>An AI assistant that answers customers and sends you the leads.</p></div>
+    <div class="card"><h3>Care Plan</h3><div class="price">30,000 <small>UGX / month</small></div><p>Updates, price changes, new photos and support.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Questions</h2>
+  <details><summary>Do I need to pay before I see anything?</summary><p>No. I make a free sample homepage first. You pay the 50% deposit only when you want me to build the full website.</p></details>
+  <details><summary>How long does it take?</summary><p>Usually about 5 days after I receive your deposit and your photos and information.</p></details>
+  <details><summary>Will it work on phones?</summary><p>Yes. Every website is built for phones first, because most of your customers search on their phones.</p></details>
+  <details><summary>Can customers book or order through WhatsApp?</summary><p>Yes. The WhatsApp button opens a chat with a message already written, so customers can contact you in one tap.</p></details>
+  <details><summary>How do I pay?</summary><p>By MTN Mobile Money or Airtel Money. I send an invoice and a receipt for every payment.</p></details>
+  <details><summary>Can I change things later?</summary><p>Yes. Changes are included for 14 days after delivery. After that you can use the monthly Care Plan or pay per update.</p></details>
+</div></section>
+
+<section id="contact" class="cta"><div class="wrap">
+  <h2>Ready for your website?</h2>
+  <p>Send me a message and I will make your free sample homepage.</p>
+  <a class="btn" href="https://wa.me/256750321506?text=Hello%20Jero%2C%20I%20would%20like%20a%20website%20for%20my%20business.">WhatsApp 0750 321 506</a>
+  <a class="btn ghost" href="tel:+256750321506">Call</a>
+</div></section>
+</main>
+
+<footer>
+  <strong>Jerofas</strong> by Syconarf Motion Pictures<br>
+  Okalasa Jerofas Syconarf (Jero) | Kampala, Uganda<br>
+  &copy; 2026 Syconarf Motion Pictures
+</footer>
+
+<a class="float" href="https://wa.me/256750321506?text=Hello%20Jero%2C%20I%20would%20like%20a%20website%20for%20my%20business.">WhatsApp</a>
+
+<!-- ===== ASK JEROFAS CHATBOT (works with no AI; add a Worker URL below to switch on AI) ===== -->
+<button id="jc-btn" type="button" aria-label="Open chat">Ask Jerofas</button>
+<div id="jc-panel" role="dialog" aria-label="Ask Jerofas chat">
+  <div id="jc-head"><div><b>Ask Jerofas</b><small>Automated assistant</small></div><button id="jc-x" type="button" aria-label="Close chat">&times;</button></div>
+  <div id="jc-log" aria-live="polite"></div>
+  <div id="jc-chips"></div>
+  <form id="jc-form" autocomplete="off"><input id="jc-in" placeholder="Type your question…" aria-label="Your message"><button id="jc-send" type="submit">Send</button></form>
+  <div id="jc-note">Automated assistant. Jero confirms everything on WhatsApp.</div>
+</div>
+<script>
+/* EDIT LATER: paste your Cloudflare Worker URL between the quotes to switch on the AI chatbot.
+   Leave it empty and the keyword chatbot below works for everyone. */
+const AI_ENDPOINT = "";
+
+(function () {
+  var WA = "256750321506";
+  var A = {
+    hello: "Hello! I’m the automated assistant for Jerofas. Ask me about websites, prices or a free sample.",
+    services: "I build business websites, AI receptionist chatbots, and property walkthrough videos for Airbnb hosts. Every website is mobile-first, with WhatsApp, call and Google Maps buttons.",
+    prices: "Starter 150,000 UGX (1-page site). Standard 250,000 UGX (4 pages). Premium 400,000+ UGX (custom site and AI receptionist).\nAdd-ons: Lite Receptionist +50,000. AI Receptionist +150,000 and 30,000 per month. Care Plan 30,000 per month.",
+    how: "1) Send your details on WhatsApp.\n2) See a free sample homepage.\n3) Pay a 50% deposit.\n4) Review, then pay the balance and launch.\n5) Free fixes for 14 days.",
+    time: "A website usually takes about 5 days after I receive your deposit, photos and information.",
+    pay: "You can pay by MTN or Airtel Mobile Money. It’s a 50% deposit to start and the balance after you approve. You get an invoice and a receipt.",
+    bot: "The AI receptionist answers your customers day and night, collects their name and phone number, and sends the lead to your WhatsApp. Setup is 150,000 UGX plus 30,000 per month.",
+    video: "I make professional walkthrough videos for Airbnb hosts and property owners in Kampala, so guests can see the space before they book.",
+    contact: "You can reach Jero on WhatsApp or by phone on 0750 321 506.",
+    none: "I’m not sure about that one. Please chat with Jero on WhatsApp and he will help you."
+  };
+  var $ = function (id) { return document.getElementById(id); };
+  var panel = $("jc-panel"), log = $("jc-log"), chipsBox = $("jc-chips"), input = $("jc-in");
+  var flow = null, hist = [], started = false;
+
+  function waLink(msg) { return "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg); }
+  function scroll() { log.scrollTop = log.scrollHeight; }
+  function say(text) {
+    var d = document.createElement("div"); d.className = "jc-m jc-b"; d.textContent = text;
+    log.appendChild(d); scroll(); return d;
+  }
+  function me(text) {
+    var d = document.createElement("div"); d.className = "jc-m jc-u"; d.textContent = text;
+    log.appendChild(d); scroll();
+  }
+  function link(label, href) {
+    var a = document.createElement("a"); a.className = "jc-wa"; a.href = href; a.target = "_blank"; a.rel = "noopener"; a.textContent = label;
+    log.appendChild(a); scroll();
+  }
+  function has(s, words) { for (var i = 0; i < words.length; i++) { if (s.indexOf(words[i]) !== -1) return true; } return false; }
+
+  function startFlow() {
+    flow = { step: 0, data: [] };
+    say("Great! I’ll arrange a free sample homepage for you. What’s your name?");
+  }
+  function flowInput(t) {
+    flow.data.push(t.trim());
+    if (flow.step === 0) { flow.step = 1; say("Nice to meet you, " + flow.data[0] + ". What’s your business name, and what do you do?"); }
+    else if (flow.step === 1) { flow.step = 2; say("Thanks. What’s the best phone or WhatsApp number to reach you?"); }
+    else {
+      var digits = t.replace(/\D/g, "");
+      if (digits.length < 9) { flow.data.pop(); say("That number looks too short. Please type it again, for example 0750 123 456."); return; }
+      var d = flow.data; flow = null;
+      say("Thank you! Tap the button to send your details to Jero on WhatsApp. He will reply with your free sample plan.");
+      link("Send to Jero on WhatsApp", waLink("Hello Jero, I would like a free sample homepage.\nName: " + d[0] + "\nBusiness: " + d[1] + "\nPhone: " + d[2]));
+    }
+  }
+  function keyword(t) {
+    var s = t.toLowerCase();
+    if (has(s, ["sample", "free", "start", "book", "order", "quote", "get started"])) return startFlow();
+    if (has(s, ["price", "cost", "how much", "charge", "fee", "amount", "cheap", "expensive", "package"])) return say(A.prices);
+    if (has(s, ["chatbot", "receptionist", " bot", "a.i", "artificial"])) return say(A.bot);
+    if (has(s, ["video", "walkthrough", "airbnb"])) return say(A.video);
+    if (has(s, ["pay", "momo", "mobile money", "deposit", "invoice", "receipt"])) return say(A.pay);
+    if (has(s, ["how long", "days", "deliver", "time", "when", "fast"])) return say(A.time);
+    if (has(s, ["how", "work", "process", "steps"])) return say(A.how);
+    if (has(s, ["contact", "whatsapp", "call", "phone", "number", "reach"])) { say(A.contact); return link("Chat with Jero on WhatsApp", waLink("Hello Jero, I would like a website for my business.")); }
+    if (has(s, ["service", "website", "offer", "do you", "what do"])) return say(A.services);
+    if (/^(hello|hi|hey|good (morning|afternoon|evening))\b/.test(s)) return say(A.hello);
+    say(A.none); link("Chat with Jero on WhatsApp", waLink("Hello Jero, I have a question."));
+  }
+  async function ask(t) {
+    if (!AI_ENDPOINT) return keyword(t);
+    hist.push({ role: "user", content: t });
+    var b = say("…");
+    try {
+      var r = await fetch(AI_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: hist }) });
+      if (!r.ok) throw new Error("bad");
+      var j = await r.json();
+      var out = String(j.reply || "");
+      if (!out) throw new Error("empty");
+      hist.push({ role: "assistant", content: out });
+      var m = out.match(/^LEAD:\s*(.+)$/m);
+      b.textContent = out.replace(/^LEAD:.*$/m, "").trim() || "…";
+      if (m) link("Send to Jero on WhatsApp", waLink("Hello Jero, I would like a free sample homepage. " + m[1]));
+      scroll();
+    } catch (e) { hist.pop(); b.remove(); keyword(t); }
+  }
+  function send(t) {
+    t = (t || "").trim(); if (!t) return;
+    chipsBox.style.display = "none"; me(t); input.value = "";
+    if (flow) return flowInput(t);
+    ask(t);
+  }
+  ["Services", "Prices", "How it works", "Free sample"].forEach(function (c) {
+    var b = document.createElement("button"); b.type = "button"; b.textContent = c;
+    b.onclick = function () { send(c === "Free sample" ? "free sample" : c); };
+    chipsBox.appendChild(b);
+  });
+  function openChat() {
+    panel.classList.add("open"); $("jc-btn").style.display = "none";
+    if (!started) { started = true; say(A.hello); }
+    input.focus();
+  }
+  function closeChat() { panel.classList.remove("open"); $("jc-btn").style.display = ""; }
+  $("jc-btn").onclick = openChat; $("jc-x").onclick = closeChat;
+  $("jc-form").onsubmit = function (e) { e.preventDefault(); send(input.value); };
+})();
+</script>
+<script>
+/* Sample videos: upload sample-video-1.mp4 and sample-video-2.mp4 next to index.html and they appear automatically. */
+document.querySelectorAll(".vid").forEach(function (box) {
+  var src = box.getAttribute("data-src");
+  fetch(src, { method: "HEAD" }).then(function (r) {
+    if (!r.ok) return;
+    var v = document.createElement("video");
+    v.controls = true; v.preload = "metadata"; v.setAttribute("playsinline", ""); v.src = src;
+    box.innerHTML = ""; box.appendChild(v);
+  }).catch(function () {});
+});
+</script>
+</body>
+</html>
