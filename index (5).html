@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nocturne – Sleep & Recovery</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1ea;--surf:#fffaf3;--ink:#2b1b10;--mute:#7d6b5d;--line:#e6dacb;--olive:#8ea35c;--amber:#e0711a;--gold:#e9b73c;--lilac:#8f73e6;--brown:#4a2c18;--on-brown:#fff6ea;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17100b;--surf:#241811;--ink:#f6ecdf;--mute:#b3a090;--line:#3a291d;--olive:#a9bf6f;--amber:#f08a35;--gold:#f3c654;--lilac:#a98cf0;--brown:#f6ecdf;--on-brown:#241811;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17100b;--surf:#241811;--ink:#f6ecdf;--mute:#b3a090;--line:#3a291d;--olive:#a9bf6f;--amber:#f08a35;--gold:#f3c654;--lilac:#a98cf0;--brown:#f6ecdf;--on-brown:#241811;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 Manrope,system-ui,sans-serif;min-height:100vh}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+main{max-width:480px;margin:0 auto;padding:20px 20px 120px}
+h1,h2,.num{font-family:Fraunces,Georgia,serif;font-weight:700;margin:0}
+h1{font-size:30px;line-height:1.1}
+h2{font-size:21px;margin-bottom:10px}
+.sub{color:var(--mute);margin:4px 0 0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand{font:700 18px Fraunces,serif;display:flex;gap:8px;align-items:center}
+.pill{border:1px solid var(--line);background:var(--surf);color:var(--ink);border-radius:99px;padding:6px 12px;font:600 12px Manrope;cursor:pointer}
+.pill.pro{background:var(--brown);color:var(--on-brown);border-color:var(--brown)}
+.hero{position:relative;width:260px;height:260px;margin:14px auto 6px}
+.hero svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hero circle{fill:none;stroke-width:15;stroke-linecap:round}
+.hero .tr{stroke:var(--line)}
+.hero .fg{transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.center{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.center .num{font-size:44px;line-height:1}
+.center small{color:var(--mute);font-size:13px;margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.stat{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:12px}
+.stat b{display:block;font:700 24px Fraunces,serif}
+.stat span{font-size:12px;color:var(--mute)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.btn{width:100%;border:0;border-radius:99px;background:var(--brown);color:var(--on-brown);font:700 16px Manrope;padding:16px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:18px;margin:16px 0;position:relative;overflow:hidden}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;position:relative;margin-top:12px}
+.bars i{flex:1;border-radius:8px 8px 4px 4px;min-height:6px;display:block}
+.bars::after{content:"";position:absolute;left:0;right:0;bottom:var(--goal);border-top:1px dashed var(--mute);opacity:.6}
+.days{display:flex;gap:8px;color:var(--mute);font-size:12px;margin-top:6px}.days span{flex:1;text-align:center}
+.split{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:12px 0 8px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.note{font-size:12px;color:var(--mute);margin-top:8px}
+.locked>.blur{filter:blur(7px);pointer-events:none;user-select:none}
+.lock{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:10px;text-align:center;padding:16px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 35%);z-index:5}
+nav div{display:flex;gap:4px;background:var(--brown);border-radius:99px;padding:5px;width:100%;max-width:400px}
+nav button{flex:1;border:0;background:transparent;color:var(--on-brown);opacity:.65;font:600 13px Manrope;padding:11px 0;border-radius:99px;cursor:pointer}
+nav button[aria-current="true"]{opacity:1;background:color-mix(in srgb,var(--on-brown) 18%,transparent)}
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:20}
+.sheet-bg.on{display:flex}
+.sheet{background:var(--bg);width:100%;max-width:480px;border-radius:26px 26px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));max-height:90vh;overflow:auto;animation:up .25s ease-out}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+label{display:block;font-weight:600;font-size:13px;margin:14px 0 6px}
+input[type=time]{width:100%;font:600 18px Manrope;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--surf);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--amber)}
+.chk{display:flex;align-items:center;gap:10px;font-weight:400;margin:10px 0}
+.chk input{width:20px;height:20px;accent-color:var(--amber)}
+ul.plain{list-style:none;padding:0;margin:0}
+ul.plain li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+ul.plain li:last-child{border:0}
+.feat li{padding:6px 0;border:0;justify-content:flex-start;gap:10px}
+.price{font:700 38px Fraunces,serif}
+.breath{width:150px;height:150px;border-radius:50%;margin:16px auto;display:grid;place-content:center;text-align:center;background:radial-gradient(circle,var(--lilac),var(--amber));color:#fff;font-weight:700;transform:scale(.6)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--brown);color:var(--on-brown);padding:10px 16px;border-radius:99px;font-size:13px;z-index:30;display:none}
+.sk{background:linear-gradient(90deg,var(--line),var(--surf),var(--line));background-size:200% 100%;animation:sh 1.3s infinite;border-radius:12px}
+@keyframes sh{to{background-position:-200% 0}}
+body{background:radial-gradient(120% 60% at 50% -10%,color-mix(in srgb,var(--amber) 22%,transparent),transparent 60%),var(--bg);background-attachment:fixed}
+.card,.stat{box-shadow:0 1px 0 color-mix(in srgb,#fff 40%,transparent) inset,0 14px 32px -20px rgba(40,20,5,.45)}
+.hero svg{filter:drop-shadow(0 0 18px color-mix(in srgb,var(--amber) 35%,transparent))}
+.btn{box-shadow:0 12px 26px -14px var(--amber)}
+.pill.pro{background:linear-gradient(135deg,#f3d27a,#d9972b);color:#2b1b10;border:0}
+.step{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.step button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surf);color:var(--ink);font:700 18px Manrope;cursor:pointer}
+.streak{display:flex;gap:6px;margin-top:14px}.streak i{flex:1;height:8px;border-radius:99px;background:var(--line)}.streak i.on{background:linear-gradient(90deg,var(--amber),var(--gold))}
+body,body *{font-family:"Plus Jakarta Sans",system-ui,sans-serif!important}
+body h1,body h2,body .num,body .brand,body .stat b,body .price{font-family:"Bodoni Moda",Georgia,serif!important}
+body h1{letter-spacing:-.01em;font-weight:500}
+input[type=text],input[type=email]{width:100%;font-size:16px;font-weight:600;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--surf);color:var(--ink)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--lilac);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<nav><div id="tabs">
+<button data-v="today">Tonight</button><button data-v="trends">Trends</button><button data-v="wind">Wind down</button>
+</div></nav>
+<div class="sheet-bg" id="sbg"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const DODO_CHECKOUT_URL = ""; // paste your Dodo Payments checkout link here
+const SUPABASE_URL = "https://cxxmmipfrzpdtcgojegz.supabase.co", SUPABASE_ANON_KEY = "sb_publishable_KiyR4SnDgNDS6pUHmlEDPQ_Er1dUFbG"; // paste from Supabase > Project Settings > API
+const sb = SUPABASE_URL && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const $ = s => document.querySelector(s), K = "nocturne.v1";
+let S = {logs: [], pro: false, goal: 8}, view = "today";
+try { Object.assign(S, JSON.parse(localStorage.getItem(K) || "{}")); } catch (e) {}
+const save = () => { try { localStorage.setItem(K, JSON.stringify(S)); } catch (e) {} };
+const day = n => { const d = new Date(); d.setDate(d.getDate() - n); return d.toISOString().slice(0, 10); };
+if (!S.logs.length) {
+  for (let i = 21; i >= 1; i--) S.logs.push({d: day(i), bed: (1350 + (i * 17) % 80) % 1440, dur: 375 + (i * 29) % 130, q: 2 + (i % 4), caf: i % 3 == 0, scr: i % 2 == 0, demo: 1});
+}
+const rel = b => (b - 1080 + 1440) % 1440;
+const hm = m => Math.floor(m / 60) + "h " + String(Math.round(m % 60)).padStart(2, "0") + "m";
+const avgBed = () => S.logs.slice(-7).reduce((a, l) => a + rel(l.bed), 0) / Math.min(7, S.logs.length);
+const score = l => Math.max(0, Math.min(100, Math.round(Math.min(l.dur / (S.goal * 60), 1) * 60 + l.q / 5 * 25 + 15 - Math.min(15, Math.abs(rel(l.bed) - avgBed()) / 6) - (l.caf ? 4 : 0) - (l.scr ? 3 : 0))));
+const recovery = () => { const r = S.logs.slice(-3); return Math.min(100, Math.round(r.reduce((a, l) => a + score(l) * .6 + Math.min(100, l.dur / (S.goal * 60) * 100) * .4, 0) / r.length)); };
+const debt = () => S.logs.slice(-7).reduce((a, l) => a + Math.max(0, S.goal * 60 - l.dur), 0);
+const t12 = m => { m = (m + 1440) % 1440; const h = Math.floor(m / 60); return ((h + 11) % 12 + 1) + ":" + String(m % 60).padStart(2, "0") + " " + (h < 12 ? "AM" : "PM"); };
+const toast = t => { const e = $("#toast"); e.textContent = t; e.style.display = "block"; setTimeout(() => e.style.display = "none", 2600); };
+function sheet(html) { $("#sheet").innerHTML = html; $("#sbg").classList.add("on"); }
+function closeSheet() { $("#sbg").classList.remove("on"); }
+$("#sbg").onclick = e => { if (e.target.id == "sbg") closeSheet(); };
+
+function ring(r, v, c) { const L = 2 * Math.PI * r; return `<circle class="tr" cx="120" cy="120" r="${r}"/><circle class="fg" data-v="${v}" data-L="${L}" cx="120" cy="120" r="${r}" stroke="${c}" stroke-dasharray="${L}" stroke-dashoffset="${L}"/>`; }
+function animate() { setTimeout(() => document.querySelectorAll(".fg").forEach(c => c.style.strokeDashoffset = c.dataset.L * (1 - Math.min(1, c.dataset.v))), 80); }
+function bars(n) {
+  const L = S.logs.slice(-n), max = S.goal * 60 * 1.25;
+  return `<div class="bars" style="--goal:${S.goal * 60 / max * 100}%">${L.map(l => { const s = score(l); return `<i title="${hm(l.dur)}" style="height:${Math.min(100, l.dur / max * 100)}%;background:${s > 75 ? "var(--olive)" : s > 55 ? "var(--gold)" : "var(--amber)"}"></i>`; }).join("")}</div>
+  <div class="days">${L.map(l => `<span>${"SMTWTFS"[new Date(l.d + "T12:00").getDay()]}</span>`).join("")}</div>`;
+}
+const lockWrap = (inner, why) => S.pro ? `<div class="card">${inner}</div>` : `<div class="card locked"><div class="blur">${inner}</div><div class="lock"><b>${why}</b><button class="pill pro" onclick="paywall()">Unlock with Pro</button></div></div>`;
+
+function today() {
+  const l = S.logs[S.logs.length - 1], s = score(l), r = recovery();
+  const rem = l.dur * .22, deep = l.dur * .16, core = l.dur - rem - deep;
+  return `<div class="top"><div class="brand">☾ Nocturne</div><div style="display:flex;gap:8px"><button class="pill" onclick="account()">${S.user ? esc(S.user.name.split(" ")[0]) : "Sign in"}</button><button class="pill ${S.pro ? "pro" : ""}" onclick="paywall()">${S.pro ? "Pro" : "Try Pro free"}</button></div></div>
+  <h1>You slept ${hm(l.dur)}</h1><p class="sub">${s >= 80 ? "Strong night. Your body is recovered." : s >= 60 ? "Decent night. Keep your bedtime steady." : "Light night. Go easy and wind down early."}</p>
+  <div class="hero"><svg viewBox="0 0 240 240">${ring(104, l.dur / (S.goal * 60), "var(--olive)")}${ring(80, s / 100, "var(--amber)")}${ring(56, r / 100, "var(--lilac)")}</svg>
+  <div class="center"><span class="num">${s}</span><small>sleep score</small></div></div>
+  <div class="stats"><div class="stat"><b>${r}%</b><span><i class="dot" style="background:var(--lilac)"></i>Recovery</span></div>
+  <div class="stat"><b>${hm(debt())}</b><span><i class="dot" style="background:var(--amber)"></i>Sleep debt, 7d</span></div>
+  <div class="stat"><b>${S.goal}h</b><span><i class="dot" style="background:var(--olive)"></i>Goal</span></div></div>
+  <button class="btn" onclick="logSheet()">Log last night</button>
+  <div class="card"><div class="step"><div><h2 style="margin:0">Sleep goal</h2><span class="sub">${streak() ? streak() + "-night streak" : "Log tonight to start a streak"}</span></div><div class="step"><button aria-label="Less sleep" onclick="goalStep(-.5)">−</button><b class="num" style="font-size:24px;min-width:42px;text-align:center">${S.goal}h</b><button aria-label="More sleep" onclick="goalStep(.5)">+</button></div></div>
+  <div class="streak">${[6,5,4,3,2,1,0].map(i => `<i class="${S.logs.some(l => !l.demo && l.d == day(i)) ? "on" : ""}"></i>`).join("")}</div></div>
+  <div class="card"><h2>Tonight’s plan</h2><ul class="plain"><li><span>Caffeine cutoff</span><b>${t12(bedT() - 480)}</b></li><li><span>Start winding down</span><b>${t12(bedT() - 60)}</b></li><li><span>Lights out</span><b>${t12(bedT())}</b></li><li><span>Bedtime consistency</span><b>±${dev()} min</b></li></ul></div>
+  ${lockWrap(`<h2>Sleep debt payback</h2>${payback()}`, "Debt payback plan")}
+  ${lockWrap(`<h2>Nap planner</h2>${nap()}`, "Nap planner")}
+  <div class="card"><h2>This week</h2><span class="sub">Dashed line is your ${S.goal}h goal</span>${bars(7)}</div>
+  <div class="card"><h2>Estimated stages</h2>
+  <div class="split"><i style="flex:${core};background:var(--olive)"></i><i style="flex:${rem};background:var(--gold)"></i><i style="flex:${deep};background:var(--lilac)"></i></div>
+  <div class="legend"><span><i class="dot" style="background:var(--olive)"></i>Core ${hm(core)}</span><span><i class="dot" style="background:var(--gold)"></i>REM ${hm(rem)}</span><span><i class="dot" style="background:var(--lilac)"></i>Deep ${hm(deep)}</span></div>
+  <p class="note">Estimated from your sleep duration, not measured.</p></div>`;
+}
+function trends() {
+  const L = S.logs.slice(-30), sc = L.map(score), w = 400, h = 120;
+  const pts = sc.map((v, i) => `${i / Math.max(1, sc.length - 1) * w},${h - v / 100 * h}`).join(" ");
+  const avg = a => a.length ? Math.round(a.reduce((x, y) => x + y, 0) / a.length) : 0;
+  const cy = L.filter(l => l.caf).map(score), cn = L.filter(l => !l.caf).map(score), sy = L.filter(l => l.scr).map(score), sn = L.filter(l => !l.scr).map(score);
+  const best = L.reduce((a, l) => score(l) > score(a) ? l : a);
+  return `<div class="top"><div class="brand">☾ Nocturne</div></div><h1>Trends</h1><p class="sub">${L.length} nights logged</p>
+  <div class="card"><h2>Last 7 nights</h2>${bars(7)}</div>
+  ${lockWrap(`<h2>Score over time</h2><svg viewBox="0 0 ${w} ${h}" style="width:100%"><polyline points="${pts}" fill="none" stroke="var(--amber)" stroke-width="3" stroke-linejoin="round"/></svg><p class="sub">Average ${avg(sc)} · best ${Math.max(...sc)}</p>`, "30-night trends")}
+  ${lockWrap(`<h2>What affects your sleep</h2><ul class="plain"><li><span>Caffeine after 2 PM</span><b>${avg(cy) - avg(cn)} pts</b></li><li><span>Screens in bed</span><b>${avg(sy) - avg(sn)} pts</b></li><li><span>Your best night</span><b>${hm(best.dur)}</b></li></ul><p class="note">Compares your average score on nights with and without each habit.</p>`, "Personal insights")}
+  ${lockWrap(weekly(), "Weekly report")}
+  ${lockWrap(chronoHtml(), "Your sleep type")}`;
+}
+let br = null, snd = null;
+function wind() {
+  const wk = S.wake || "07:00";
+  return `<div class="top"><div class="brand">☾ Nocturne</div></div><h1>Wind down</h1><p class="sub">Go to bed at a time that ends a full sleep cycle.</p>
+  <div class="card"><h2>Bedtime calculator</h2><label for="wk">I need to wake up at</label><input type="time" id="wk" value="${wk}" onchange="S.wake=this.value;save();$('#bt').innerHTML=bt()"><ul class="plain" id="bt" style="margin-top:8px">${bt()}</ul><p class="note">Based on 90-minute cycles plus 15 minutes to fall asleep.</p></div>
+  <div class="card"><h2>4-7-8 breathing</h2><div class="breath" id="bb"><span id="bl">Ready</span></div><button class="btn ghost" id="bbtn" onclick="breathe()">Start</button></div>
+  ${lockWrap(`<h2>Sleep sounds</h2><div style="display:flex;gap:8px"><button class="btn ghost" onclick="sound('brown')">Brown noise</button><button class="btn ghost" onclick="sound('rain')">Rain</button></div>`, "Sleep sounds")}`;
+}
+function bt() {
+  const [h, m] = (S.wake || "07:00").split(":").map(Number), w = h * 60 + m;
+  return [6, 5, 4].map(n => `<li><span><b>${t12(w - n * 90 - 15)}</b></span><span class="sub">${n} cycles · ${n * 1.5}h</span></li>`).join("");
+}
+function breathe() {
+  if (br) { cancelAnimationFrame(br); br = null; $("#bbtn").textContent = "Start"; $("#bl").textContent = "Ready"; $("#bb").style.transform = "scale(.6)"; return; }
+  $("#bbtn").textContent = "Stop"; const t0 = performance.now();
+  const f = now => { const t = ((now - t0) / 1000) % 19, b = $("#bb"); if (!b) return; let s, l;
+    if (t < 4) { s = .6 + .4 * t / 4; l = "Inhale"; } else if (t < 11) { s = 1; l = "Hold"; } else { s = 1 - .4 * (t - 11) / 8; l = "Exhale"; }
+    b.style.transform = `scale(${s})`; $("#bl").textContent = l; br = requestAnimationFrame(f); };
+  br = requestAnimationFrame(f);
+}
+function sound(type) {
+  try {
+    if (snd) { snd.close(); const same = snd.type == type; snd = null; if (same) return; }
+    const c = new (window.AudioContext || window.webkitAudioContext)(), n = c.sampleRate * 2, buf = c.createBuffer(1, n, c.sampleRate), d = buf.getChannelData(0); let last = 0;
+    for (let i = 0; i < n; i++) { const w = Math.random() * 2 - 1; if (type == "brown") { last = (last + .02 * w) / 1.02; d[i] = last * 3.5; } else d[i] = w * .5; }
+    const src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain(); src.buffer = buf; src.loop = true;
+    f.type = type == "rain" ? "highpass" : "lowpass"; f.frequency.value = type == "rain" ? 1500 : 600; g.gain.value = .35;
+    src.connect(f); f.connect(g); g.connect(c.destination); src.start(); c.type = type; snd = c; toast("Playing. Tap again to stop.");
+  } catch (e) { toast("Audio isn’t available on this device."); }
+}
+function logSheet() {
+  sheet(`<h2>Log last night</h2><label for="b">Bedtime</label><input type="time" id="b" value="23:00"><label for="w">Wake-up</label><input type="time" id="w" value="07:00">
+  <label for="q">How rested do you feel? <span id="qv">3</span>/5</label><input type="range" id="q" min="1" max="5" value="3" oninput="qv.textContent=this.value">
+  <label class="chk"><input type="checkbox" id="c">Caffeine after 2 PM</label><label class="chk"><input type="checkbox" id="s">Screens in bed</label>
+  <button class="btn" onclick="addLog()">Save night</button>`);
+}
+function addLog() {
+  const [bh, bm] = $("#b").value.split(":").map(Number), [wh, wm] = $("#w").value.split(":").map(Number);
+  let dur = wh * 60 + wm - (bh * 60 + bm); if (dur <= 0) dur += 1440;
+  const d = day(0); S.logs = S.logs.filter(l => l.d != d);
+  S.logs.push({d, bed: bh * 60 + bm, dur, q: +$("#q").value, caf: $("#c").checked, scr: $("#s").checked});
+  save(); closeSheet(); render(); toast("Night saved");
+}
+function paywall() {
+  sheet(`<h2>Nocturne Pro</h2><div class="price">3 days free</div><p class="sub" style="margin:2px 0 0">Then $4.99 / month. Cancel anytime in one tap.</p>
+  <ul class="plain feat" style="margin:12px 0"><li>✓ 30-night score trends</li><li>✓ Personal insights on caffeine and screens</li><li>✓ Sleep sounds</li><li>✓ Sleep debt payback plan</li><li>✓ Nap planner</li><li>✓ Weekly report and sleep type</li></ul>
+  ${S.pro ? subPanel() : `<button class="btn" onclick="checkout()">Start 3-day free trial</button><button class="btn ghost" style="margin-top:10px" onclick="startPro()">Preview the trial</button>`}
+  <p class="note">You won’t be charged until day 4. Secure checkout by Dodo Payments.</p>`);
+}
+const wakeM = () => { const [h, m] = (S.wake || "07:00").split(":").map(Number); return h * 60 + m; };
+const bedT = () => wakeM() - S.goal * 60 - 15;
+function streak() { const s = new Set(S.logs.filter(l => !l.demo).map(l => l.d)); let i = s.has(day(0)) ? 0 : 1, n = 0; while (s.has(day(i))) { n++; i++; } return n; }
+function goalStep(d) { S.goal = Math.min(10, Math.max(5, Math.round((S.goal + d) * 2) / 2)); save(); render(); }
+function dev() { const L = S.logs.slice(-7), a = avgBed(); return Math.round(L.reduce((x, l) => x + Math.abs(rel(l.bed) - a), 0) / L.length); }
+function payback() { const d = debt(); if (d < 20) return '<p class="sub">You’re caught up. No debt to repay.</p>'; const x = Math.min(60, Math.ceil(d / 4 / 5) * 5); return `<p>You’re ${hm(d)} behind this week. Go to bed <b>${x} min earlier</b> for 4 nights to catch up.</p><p class="sub">New bedtime: <b>${t12(bedT() - x)}</b></p>`; }
+function nap() { const r = recovery(); return r < 60 ? `<p><b>90-minute nap</b> before 3 PM.</p><p class="sub">Recovery is ${r}%. One full cycle helps without wrecking tonight.</p>` : r < 80 ? `<p><b>20-minute power nap</b> before 3 PM.</p><p class="sub">Recovery is ${r}%. A short nap boosts focus.</p>` : `<p>No nap needed.</p><p class="sub">Recovery is ${r}%.</p>`; }
+function weekly() {
+  const a = S.logs.slice(-7), b = S.logs.slice(-14, -7), av = (L, f) => L.length ? L.reduce((x, l) => x + f(l), 0) / L.length : 0;
+  const sa = Math.round(av(a, score)), sb = Math.round(av(b, score)), wd = l => new Date(l.d + "T12:00").toLocaleDateString(undefined, {weekday: "long"});
+  const best = a.reduce((p, l) => score(l) > score(p) ? l : p), worst = a.reduce((p, l) => score(l) < score(p) ? l : p);
+  return `<h2>Weekly report</h2><ul class="plain"><li><span>Average sleep</span><b>${hm(av(a, l => l.dur))}</b></li><li><span>Average score</span><b>${sa} (${sa >= sb ? "+" : ""}${sa - sb} vs last week)</b></li><li><span>Best night</span><b>${wd(best)}</b></li><li><span>Roughest night</span><b>${wd(worst)}</b></li></ul>`;
+}
+function chronoHtml() { const L = S.logs.slice(-14), m = L.reduce((a, l) => a + (l.bed + l.dur / 2) % 1440, 0) / L.length; return `<h2>${m < 180 ? "Early bird" : m < 300 ? "In-between" : "Night owl"}</h2><p class="sub">Your sleep midpoint is ${t12(Math.round(m))}. Plan demanding work for when you’re most alert.</p>`; }
+const fmt = d => new Date(d).toLocaleDateString(undefined, {month: "short", day: "numeric"});
+function subPanel() {
+  return `<div class="card" style="margin:12px 0"><b>Pro · ${S.trial ? "Free trial" : "Monthly"}</b><div class="sub">${S.trial ? "Then $4.99 / month" : "$4.99 / month"}</div><div class="sub">${S.cancel ? "Ends " : S.trial ? "Trial ends " : "Renews "}${fmt(S.renews)}</div></div>` + (S.cancel
+    ? `<button class="btn" onclick="resumeSub()">Resume subscription</button><p class="note">You’ll keep Pro until ${fmt(S.renews)}.</p>`
+    : `<button class="btn" onclick="cancelSub()">${S.trial ? "Cancel trial" : "Cancel subscription"}</button><p class="note">You’ll keep Pro until ${fmt(S.renews)}. One tap, no questions asked.</p>`);
+}
+function startPro() { if (!S.user) { account("trial"); return; } S.pro = true; S.trial = true; S.cancel = false; S.renews = new Date(Date.now() + 3 * 864e5).toISOString().slice(0, 10); save(); closeSheet(); render(); toast("Your 3-day trial has started"); }
+const esc = s => s.replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+function account(next) {
+  if (S.user) { sheet(`<h2>Your account</h2><ul class="plain"><li><span>Name</span><b>${esc(S.user.name)}</b></li><li><span>Email</span><b>${esc(S.user.email)}</b></li></ul><button class="btn ghost" onclick="signOut()">Sign out</button>`); return; }
+  sheet(`<h2>Create your account</h2><p class="sub">Save your sleep log and start your 3-day Pro trial.</p><label for="nm">Name</label><input type="text" id="nm" autocomplete="name"><label for="em">Email</label><input type="email" id="em" autocomplete="email"><button class="btn" style="margin-top:18px" onclick="signUp('${next || ""}')">Create account</button><button class="btn ghost" style="margin-top:10px" onclick="S.skip=1;save();closeSheet()">Not now</button><p class="note">Your details stay on this device.</p>`);
+}
+function signUp(next) {
+  const n = $("#nm").value.trim(), e = $("#em").value.trim();
+  if (!n || !/^\S+@\S+\.\S+$/.test(e)) { toast("Enter your name and a valid email"); return; }
+  if (sb) { sb.auth.signInWithOtp({email: e, options: {data: {name: n}, emailRedirectTo: location.href.split("#")[0]}}).then(({error}) => { closeSheet(); toast(error ? error.message : "Check your email for the sign-in link"); }); return; }
+  S.user = {name: n, email: e}; save(); closeSheet(); render();
+  if (next == "trial") startPro(); else toast("Welcome, " + n.split(" ")[0]);
+}
+function signOut() { if (sb) sb.auth.signOut(); S.user = null; S.skip = 0; save(); closeSheet(); render(); }
+function cancelSub() { S.cancel = true; save(); paywall(); toast("Subscription canceled"); }
+function resumeSub() { S.cancel = false; save(); paywall(); toast("Subscription resumed"); }
+function checkout() { if (DODO_CHECKOUT_URL) window.open(DODO_CHECKOUT_URL, "_blank"); else toast("Add your Dodo checkout link in the code first."); }
+function render() {
+  if (br) { cancelAnimationFrame(br); br = null; }
+  $("#app").innerHTML = view == "today" ? today() : view == "trends" ? trends() : wind();
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-current", b.dataset.v == view));
+  animate();
+}
+$("#tabs").onclick = e => { const v = e.target.dataset.v; if (v) { view = v; render(); scrollTo(0, 0); } };
+if (sb) {
+  const apply = ses => { if (ses) S.user = {name: (ses.user.user_metadata && ses.user.user_metadata.name) || ses.user.email.split("@")[0], email: ses.user.email}; else S.user = null; save(); render(); };
+  sb.auth.getSession().then(({data}) => apply(data.session));
+  sb.auth.onAuthStateChange((_ev, ses) => apply(ses));
+}
+function skeleton() {
+  const b = (h, x = "") => `<div class="sk" style="height:${h}px;${x}"></div>`;
+  return b(34, "width:60%;margin:40px 0 10px") + b(16, "width:80%") + b(260, "width:260px;border-radius:50%;margin:24px auto") + `<div class="stats">${b(76)}${b(76)}${b(76)}</div>` + b(52, "border-radius:99px") + b(200, "margin-top:16px;border-radius:22px");
+}
+if (S.renews && new Date(S.renews) < new Date()) { if (S.cancel) { S.pro = false; S.cancel = false; S.trial = false; } else if (S.trial) { S.trial = false; S.renews = new Date(Date.now() + 30 * 864e5).toISOString().slice(0, 10); } save(); }
+$("#app").innerHTML = skeleton();
+Promise.race([document.fonts ? document.fonts.ready : 0, new Promise(r => setTimeout(r, 700))]).then(render).then(() => { if (!S.user && !S.skip) account(); });
+</script>
+</body>
+</html>
